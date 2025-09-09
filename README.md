@@ -63,7 +63,39 @@ A responsive YouTube-like video browsing app built with React and Material UI. I
 - `npm start` — run dev server
 - `npm run build` — production build
 
+## Deployment
+
+### Netlify Deployment
+
+1. **Set Environment Variables in Netlify:**
+   - Go to your Netlify dashboard
+   - Navigate to Site settings → Environment variables
+   - Add: `REACT_APP_RAPID_API_KEY` with your RapidAPI key value
+
+2. **Deploy:**
+   - Connect your GitHub repository to Netlify
+   - Netlify will automatically build and deploy using the `netlify.toml` configuration
+   - The app will work with mock data if the API key is not configured
+
+### Troubleshooting
+
+**403 Forbidden Error:**
+- Ensure your RapidAPI key is correctly set in Netlify environment variables
+- Check that your RapidAPI subscription is active
+- The app will fallback to mock data if the API fails
+
+**404 Thumbnail Errors:**
+- The app now includes robust fallback handling for thumbnail images
+- If YouTube thumbnails fail to load, placeholder images will be used automatically
+
+**Environment Variables Not Working:**
+- Make sure the variable name starts with `REACT_APP_`
+- Redeploy after adding environment variables
+- Check Netlify build logs for any configuration issues
+
 ## Notes
 
 - The API returns up to 50 results per request as configured.
 - Ensure your RapidAPI subscription is active and the key has access to `youtube-v31`.
+- The app includes fallback mock data for development and when API calls fail.
+- Thumbnail images have multiple fallback options to prevent 404 errors.
